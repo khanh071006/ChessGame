@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  --color-chess-light: #f0d9b5;
+  --color-chess-dark: #b58863;
+  --color-panel: rgba(30, 31, 40, 0.6);
+  --color-panel-border: rgba(255, 255, 255, 0.1);
+}
+
+@layer base {
+  :root {
+    --background: #0f111a;
+    --foreground: #e2e8f0;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    background: rgba(30, 31, 40, 0.9); /* Opaque enough to look good without blur */
+    border: 1px solid var(--color-panel-border);
+    border-radius: 1rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  .glass-button {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s ease;
+  }
+  
+  .glass-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+  }
+  
+  .glass-button:active {
+    transform: translateY(1px);
+  }
+}
+
+/* Scrollbar styling for a premium feel */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Fix react-chessboard promotion dialog transparent backgrounds overlapping */
+div[title="Choose promotion piece"] > div {
+  background-color: #2a2d3d !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5) !important;
+  margin: 2px !important;
+  transition: all 0.2s ease-in-out;
+}
+div[title="Choose promotion piece"] > div:hover {
+  background-color: #3f445e !important;
+  transform: scale(1.05);
+}
